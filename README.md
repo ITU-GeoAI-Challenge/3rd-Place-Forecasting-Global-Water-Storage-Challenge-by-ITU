@@ -1,4 +1,6 @@
 # 3rd-Place-Forecasting-Global-Water-Storage-Challenge-by-ITU
+
+My solution notebook, TWS_Solution_v11.ipynb, produces the blend submission_blend_v8v9v11_33_41_26.csv with a public score of 0.649536249 and a private score of 0.700354631. The notebook file is located in the Code/ folder, and the submission file is stored in the outputs/ folder.
 1.Data & Model Bias:
 
 I did not use AI Fairness 360. I checked holdout bias and RMSE by latitude band and by horizon.Training TWS gaps last 1–2 months; test gaps run 3–18 months (about 28% of test rows). Tropics are too dry (bias −0.095, RMSE 0.696); 15–30° is the worst band. SPEI and soil moisture vanish across long voids; GDO SPI and fAPAR do not.A per-band offset helped CAL and failed HOLD. v8 calibration cost +0.004 on the public board, so both stay off. No lat/lon features. Recency weights (τ = 120 months) favour the later GRACE era.
