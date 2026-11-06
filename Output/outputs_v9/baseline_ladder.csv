@@ -1,0 +1,13 @@
+approach,hold_rmse
+seasonal climatology,1.1125795758549393
+persistence,0.8545317302712552
+kalman analytic base,0.7884219670591567
+"LightGBM, direct",0.6443271823225952
+"LightGBM, residual on filter",0.6406214431450001
+"XGBoost, residual",0.641809344499887
+"CatBoost, residual",0.6407358803042467
+stacked ensemble (CAL weights),0.6388519625832108
++ spatial smoothing,0.6279493625070542
++ h=1 specialist,0.625267687290563
++ per-horizon calibration,0.6250921487934104
++ per-band de-bias (final),0.625267687290563
