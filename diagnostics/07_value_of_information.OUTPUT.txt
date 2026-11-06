@@ -1,0 +1,29 @@
+patched
+C:\Users\user\AppData\Local\Temp\claude\d--Water-4-9-26\0365e267-1c40-40c3-acd9-2093ed10af4e\scratchpad\b3_value.py:14: RuntimeWarning: Mean of empty slice
+  mu=np.nanmean(A[ke],axis=0); B[k]=A[k]-mu
+provided-column panels: ['SPEI_01_t', 'SPEI_03_t', 'SPEI_06_t', 'SPEI_12_t', 'SOIL_MOISTURE_t']
+GDO panels: {'g_spg03': 0.992, 'g_spg06': 0.997, 'g_fapan': 0.746}
+observed months: 154
+FIT_END 134 TRN (3, 116) VAL (116, 201)
+train 297804 valid 148785
+  A causal (TWS + ERA5 up to t)          nfeat= 60  RMSE 0.6374
+  A2 + provided cols at the t+1 row      nfeat= 70  RMSE 0.6370
+  B  + SEAS5 (realistic forecast)        nfeat= 64  RMSE 0.6391
+  C  + GDO SPI3/SPI6/fAPAR               nfeat= 66  RMSE 0.6342
+  D  + PERFECT target-month ERA5 (ceiling) nfeat= 69  RMSE 0.6382
+  E  + SEAS5 + GDO                       nfeat= 70  RMSE 0.6352
+  F  + SEAS5 + GDO + provided-at-t+1     nfeat= 80  RMSE 0.6342
+  G  F + PERFECT target-month ERA5       nfeat= 89  RMSE 0.6342
+
+baseline 0.6374
+  +provided SPEI/SM from the t+1 row 0.6370   delta -0.0005
+  +SEAS5 forecast of target month    0.6391   delta +0.0017
+  +GDO SPI/fAPAR at t                0.6342   delta -0.0033
+  +PERFECT target-month ERA5         0.6382   delta +0.0008
+  +SEAS5 +GDO                        0.6352   delta -0.0022
+  EVERYTHING legitimate              0.6342   delta -0.0033
+  EVERYTHING + perfect weather       0.6342   delta -0.0032
+
+656s
+
+[exited with code 0]
