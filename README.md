@@ -50,6 +50,7 @@ A new cell needs TWS history, ERA5-Land, and GDO SPI/fAPAR. No latitude dummy. E
 FAST/SMOKE flags cut cost. Limit: monthly TWS on a 1° grid, not a 1 km basin. The reusable parts are the causal filter, residual trees, and physical features instead of coordinates.
 
 4. Sustainability and Efficiency:
+ 
 CodeCarbon on the full v11 run: 56.5 g CO2e, 0.33 kWh. One Windows laptop (i7-1185G7, 6 threads, ~23 GB RAM), no GPU. Wall clock 11.2 hours, almost all training. The 280,961 test rows take a few minutes.
 No deep net. fAPAR is cut from 2.8 GB to a 34 MB cache. Extra trees cost ~1.3 hours for 0.001–0.002 RMSE; FAST mode skips them. Fine for a monthly GRACE fill. A daily job would keep LightGBM only.
 
