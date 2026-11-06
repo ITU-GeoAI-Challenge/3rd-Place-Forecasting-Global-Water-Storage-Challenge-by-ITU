@@ -83,6 +83,39 @@ No deep net. fAPAR is cut from 2.8 GB to a 34 MB cache. Extra trees cost ~1.3 ho
 Innovation and practicality (20% score, not in the 4-item form)
 v8 copied the test gap pattern into validation and got worse on the board (0.657 vs 0.653). A one-line EOF-delta bug fix in v9 did help (public LB 0.651802). v11 adds GDO after a side test of every extra source: SEAS5 was worse (+0.0017), even perfect target-month ERA5 added nothing, GDO SPI/fAPAR was the only gain (−0.0032). Holdout RMSE stays 0.60–0.65 from h=1 to h=7. Known failure: tropical dry bias ~0.09 — I would publish that map, not hide it. Predictions are raw floats, no rounding.
 
-<img width="263" height="123" alt="image" src="https://github.com/user-attachments/assets/31b91070-67f6-41d1-9d6c-326b9d0a8b73" />
+<table>
+  <thead>
+    <tr>
+      <th>Approach</th>
+      <th>Holdout RMSE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Climatology</td>
+      <td>1.113</td>
+    </tr>
+    <tr>
+      <td>Persistence</td>
+      <td>0.855</td>
+    </tr>
+    <tr>
+      <td>Kalman filter only</td>
+      <td>0.788</td>
+    </tr>
+    <tr>
+      <td>LightGBM / XGBoost / CatBoost stack</td>
+      <td>0.635</td>
+    </tr>
+    <tr>
+      <td>+ smooth + h=1 specialist (shipped)</td>
+      <td>0.623</td>
+    </tr>
+    <tr>
+      <td>+ calibration (left off)</td>
+      <td>0.625</td>
+    </tr>
+  </tbody>
+</table>
 How to rerun
 Local Windows laptop, not Colab. pip install -r requirements.txt. Place Train.csv and Test.csv next to the notebook, plus era5/, era5_extra/, and gdo/ caches. Run TWS_Solution_v11.ipynb. Output: outputs_v11/submission_v11.csv. Seeds: LightGBM (1,2,3). LightGBM: lr 0.03, 255 leaves, early stopping on CAL.
