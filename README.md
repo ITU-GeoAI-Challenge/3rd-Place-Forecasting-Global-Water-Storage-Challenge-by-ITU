@@ -47,6 +47,7 @@ Unexpected: ERA5 LAI is almost unused (it is a climatology), so I added MODIS fA
 
 A new cell needs TWS history, ERA5-Land, and GDO SPI/fAPAR. No latitude dummy. Extra data is public Copernicus. Kalman and EOF look backward only, so a new month appends. Lead times 1–7 are already mixed, as in the test file.
 FAST/SMOKE flags cut cost. Limit: monthly TWS on a 1° grid, not a 1 km basin. The reusable parts are the causal filter, residual trees, and physical features instead of coordinates.
+
 4.Sustainability and Efficiency:
 
 CodeCarbon on the full v11 run: 56.5 g CO2e, 0.33 kWh. One Windows laptop (i7-1185G7, 6 threads, ~23 GB RAM), no GPU. Wall clock 11.2 hours, almost all training. The 280,961 test rows take a few minutes.
