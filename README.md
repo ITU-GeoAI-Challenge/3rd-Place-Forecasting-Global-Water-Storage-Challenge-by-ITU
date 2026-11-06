@@ -49,7 +49,36 @@ FAST/SMOKE flags cut cost. Limit: monthly TWS on a 1° grid, not a 1 km basin. T
 CodeCarbon on the full v11 run: 56.5 g CO2e, 0.33 kWh. One Windows laptop (i7-1185G7, 6 threads, ~23 GB RAM), no GPU. Wall clock 11.2 hours, almost all training. The 280,961 test rows take a few minutes.
 No deep net. fAPAR is cut from 2.8 GB to a 34 MB cache. Extra trees cost ~1.3 hours for 0.001–0.002 RMSE; FAST mode skips them. Fine for a monthly GRACE fill. A daily job would keep LightGBM only
 
-<img width="311" height="104" alt="image" src="https://github.com/user-attachments/assets/7b6ef6ad-95d9-4087-b2ec-ca50072bccc1" />
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>v11 run</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hardware</td>
+      <td>Laptop CPU, no GPU</td>
+    </tr>
+    <tr>
+      <td>Wall clock</td>
+      <td>11.2 hours (40,341 s)</td>
+    </tr>
+    <tr>
+      <td>CodeCarbon</td>
+      <td>56.5 g CO2e / 0.33 kWh</td>
+    </tr>
+    <tr>
+      <td>Peak RAM</td>
+      <td>~23 GB of 32 GB</td>
+    </tr>
+    <tr>
+      <td>Inference</td>
+      <td>a few minutes for 280,961 rows</td>
+    </tr>
+  </tbody>
+</table>
 
 Innovation and practicality (20% score, not in the 4-item form)
 v8 copied the test gap pattern into validation and got worse on the board (0.657 vs 0.653). A one-line EOF-delta bug fix in v9 did help (public LB 0.651802). v11 adds GDO after a side test of every extra source: SEAS5 was worse (+0.0017), even perfect target-month ERA5 added nothing, GDO SPI/fAPAR was the only gain (−0.0032). Holdout RMSE stays 0.60–0.65 from h=1 to h=7. Known failure: tropical dry bias ~0.09 — I would publish that map, not hide it. Predictions are raw floats, no rounding.
